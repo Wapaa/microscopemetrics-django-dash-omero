@@ -1,0 +1,74 @@
+omero config set omero.web.databases '{"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase"}}'
+
+python omeroweb/manage.py migrate
+
+omero config append omero.web.apps '"django_plotly_dash"'
+omero config append omero.web.apps '"bootstrap4"'
+omero config append omero.web.apps '"dpd_static_support"'
+
+omero config append omero.web.ui.top_links '["{{cookiecutter.webapp_title}}", "{{cookiecutter.webapp_name}}_index", {"title": "Open {{cookiecutter.webapp_title}} in new tab", "target": "_blank"}]'
+
+
+
+omero config append omero.web.middleware '{"index": 7, "class": "django_plotly_dash.middleware.ExternalRedirectionMiddleware"}'
+omero config append omero.web.middleware '{"index": 0.5, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'
+omero config append omero.web.middleware '{"index": 8, "class": "django_plotly_dash.middleware.BaseMiddleware"}'
+
+
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    'django_plotly_dash.finders.DashAssetFinder',
+    'django_plotly_dash.finders.DashComponentFinder',
+    'django_plotly_dash.finders.DashAppDirectoryFinder',
+]
+
+
+PLOTLY_COMPONENTS = [
+
+    'dash_bootstrap_components',
+    'dpd_components',
+    'dpd_static_support',
+]
+
+PLOTLY_DASH = {
+
+    # Route used for the message pipe websocket connection
+    "ws_route" :   "dpd/ws/channel",
+
+    # Route used for direct http insertion of pipe messages
+    "http_route" : "dpd/views",
+
+    # Flag controlling existince of http poke endpoint
+    "http_poke_enabled" : True,
+
+    # Insert data for the demo when migrating
+    "insert_demo_migrations" : False,
+
+    # Timeout for caching of initial arguments in seconds
+    "cache_timeout_initial_arguments": 60,
+
+    # Name of view wrapping function
+    "view_decorator": None,
+
+    # Flag to control location of initial argument storage
+   
+    "cache_arguments": False,
+
+    # Flag controlling local serving of assets
+    "serve_locally": False,
+}
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+
+
+
+
+
+
+
+
+"django.template.context_processors.request",
