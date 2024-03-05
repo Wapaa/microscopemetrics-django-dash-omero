@@ -12,7 +12,6 @@ django-plotly-dash = "^2.3.0"
 zeroc-ice = "^3.6"
 omero-py = "^5"
 omero-web = "^5"
-microscopemetrics-omero  = {git = "https://github.com/juliomateoslangerak/microscopemetrics-omero.git", branch='dev'}
 dash-mantine-components = "^0.12.1"
 bootstrap4 = "0.1.0"
 dpd-static-support = "0.0.5"
