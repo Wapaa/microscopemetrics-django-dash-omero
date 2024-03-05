@@ -2,7 +2,7 @@
 name = "microscopemetrics-django-dash-omero"
 version = "0.1.0"
 description = ""
-authors = ["wapaa <oumou.elmouminine.dhmine@insa.ueuromed.org>"]
+authors = ["Oumou <oumoudhmine@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -14,7 +14,8 @@ omero-py = "^5"
 omero-web = "^5"
 microscopemetrics-omero  = {git = "https://github.com/juliomateoslangerak/microscopemetrics-omero.git", branch='dev'}
 dash-mantine-components = "^0.12.1"
-
+bootstrap4 = "0.1.0"
+dpd-static-support = "0.0.5"
 
 [build-system]
 requires = ["poetry-core"]
