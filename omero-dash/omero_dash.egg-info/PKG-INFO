@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: omero-dash
+Version: 0.1.0
+Summary: This app is a visualization tool using django_plotly_dash.
+Keywords: omero
